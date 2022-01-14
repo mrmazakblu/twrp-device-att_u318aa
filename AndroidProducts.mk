@@ -17,4 +17,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-     $(LOCAL_DIR)/omni_U318AA.mk
+     $(LOCAL_DIR)/twrp_U318AA.mk
+     
+COMMON_LUNCH_CHOICES := twrp_U318AA-eng
