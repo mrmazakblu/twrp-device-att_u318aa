@@ -19,9 +19,6 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-# Inherit from U318AA device
-$(call inherit-product, device/tinno/U318AA/device.mk)
-
 # Inherit some common TWRP stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
@@ -32,3 +29,8 @@ PRODUCT_BRAND := ATT
 PRODUCT_MODEL := U318AA
 PRODUCT_MANUFACTURER := tinno
 PRODUCT_RELEASE_NAME := ATT U318AA
+
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31 \
+
