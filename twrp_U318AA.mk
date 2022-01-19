@@ -20,11 +20,11 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit some common TWRP stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := U318AA
-PRODUCT_NAME := omni_U318AA
+PRODUCT_NAME := twrp_U318AA
 PRODUCT_BRAND := ATT
 PRODUCT_MODEL := U318AA
 PRODUCT_MANUFACTURER := tinno
