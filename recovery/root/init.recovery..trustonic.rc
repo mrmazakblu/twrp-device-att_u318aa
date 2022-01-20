@@ -8,8 +8,8 @@ service mobicore /vendor/bin/mcDriverDaemon --P1 /mnt/vendor/persist/mcRegistry 
 	-r /vendor/app/mcRegistry/030c0000000000000000000000000000.drbin \
 	-r /vendor/app/mcRegistry/40188311faf343488db888ad39496f9a.drbin \
 	-r /vendor/app/mcRegistry/05160000000000000000000000000000.drbin
-    user system
-    group system
+    user root
+    group root
     class core
     priority -20
 
