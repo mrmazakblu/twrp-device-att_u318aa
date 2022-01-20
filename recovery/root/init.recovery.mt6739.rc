@@ -1,4 +1,4 @@
-import /init.recovery.microtrust.rc
+import /init.recovery.trustonic.rc
 
 on fs
     install_keyring
@@ -84,7 +84,7 @@ on post-fs
     symlink /dev/block/platform/bootdevice/by-name/preloader_a /dev/block/platform/bootdevice/by-name/preloader_ufs_a
     symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/platform/bootdevice/by-name/preloader_ufs_b
 
-service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.beanpod
+service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.trustonic
     user root
     group root drmrpc
     disabled
@@ -94,14 +94,14 @@ on property:hwservicemanager.ready=true
     start keymaster-4-0
 
 on property:ro.crypto.state=unsupported
-    stop teei_daemon
+    stop mobicore
     stop keymaster-4-0
 
 on property:ro.crypto.state=unencrypted
-    stop teei_daemon
+    stop mobicore
     stop keymaster-4-0
 
 on property:twrp.decrypt.done=true
-    stop teei_daemon
+    stop mobicore
     stop keymaster-4-0
 
