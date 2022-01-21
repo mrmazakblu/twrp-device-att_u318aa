@@ -1,0 +1,28 @@
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+# mount point    fstype           device                    device2                flags
+
+# Common partition
+/boot             emmc    /dev/block/by-name/boot                     flags=backup=1;display="Boot";flashimg=1
+/cache            ext4    /dev/block/by-name/cache                    flags=backup=1;display="Cache";wipeingui
+/dtbo             emmc    /dev/block/by-name/dtbo                     flags=backup=1;display="DTBO";flashimg=1
+/recovery         emmc    /dev/block/by-name/recovery                 flags=backup=1;display="Recovery"
+/vbmeta           emmc    /dev/block/by-name/vbmeta                   flags=backup=1;display="VBMeta";flashimg=1
+/data             ext4    /dev/block/by-name/userdata                 flags=fileencryption=aes-256-xts:aes-256-cts
+
+# MediaTek partition
+/protect_f        ext4    /dev/block/by-name/protect1                 flags=display="Protect_F";backup=1;
+/protect_s        ext4    /dev/block/by-name/protect2                 flags=display="Protect_S";backup=1;
+/persist          ext4    /dev/block/by-name/persist                  flags=display="Persist";backup=1;
+/nvram            emmc    /dev/block/by-name/nvram                    flags=display="NvRam";backup=1;
+/nvdata           ext4    /dev/block/by-name/nvdata                   flags=display="NvData";backup=1;subpartitionof=/nvram;
+/nvcfg            ext4    /dev/block/by-name/nvcfg                    flags=display="NvCfg";backup=1;subpartitionof=/nvram;
+/persistent       emmc    /dev/block/by-name/frp
+/proinfo          emmc    /dev/block/by-name/proinfo
+/para             emmc    /dev/block/by-name/para
+/logo             emmc    /dev/block/by-name/logo
+/vbmeta_system    emmc    /dev/block/by-name/vbmeta_system            flags=display="Vbmeta System";flashimg=1;backup=1;
+/vbmeta_vendor    emmc    /dev/block/by-name/vbmeta_vendor            flags=display="Vbmeta Vendor";flashimg=1;backup=1;
+
+/usbstorage       auto    /dev/block/sdd1  /dev/block/sdd             flags=display="USB Storage";storage;wipeingui;removable;fsflags="utf8"
