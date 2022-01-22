@@ -1,6 +1,6 @@
 on init
     #create mountpoint for /mnt/vendor/persist partition
-    mkdir /mnt/vendor/persist 0771 system system
+    mkdir /mnt/vendor/persist 0771 root root
 
 on post-fs
     chown root root /mnt/vendor/persist

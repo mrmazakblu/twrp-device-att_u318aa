@@ -1,4 +1,4 @@
-import /init.recovery.trustonic.rc
+import init.recovery.trustonic.rc
 import tee.rc
 
 on fs
