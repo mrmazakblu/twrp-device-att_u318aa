@@ -22,24 +22,14 @@ DEVICE_PATH := device/tinno/U318AA
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
-#TARGET_ARCH := arm
-#TARGET_ARCH_VARIANT := armv8-a
-#TARGET_CPU_ABI := armeabi-v7a
-#TARGET_CPU_ABI2 := armeabi
-#TARGET_CPU_VARIANT := cortex-a53
-
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
 
-
-#TARGET_BOARD_SUFFIX :=
-#TARGET_USES_32_BIT_BINDER := true
-#TARGET_SUPPORTS_32_BIT_APPS := true
-#TARGET_USES_64_BIT_BINDER := false
-#TARGET_SUPPORTS_64_BIT_APPS := false
+# Legacy GSI keeps 32 bits binder for 32 bits CPU Arch
+TARGET_USES_64_BIT_BINDER := false
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := U318AA
@@ -77,6 +67,10 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 
 #TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+
+# Creates metadata partition mount point under root for
+# the devices with metadata parition
+BOARD_USES_METADATA_PARTITION := true
 
 # Dynamic partitions
 BOARD_SUPER_PARTITION_SIZE := 2457862144
