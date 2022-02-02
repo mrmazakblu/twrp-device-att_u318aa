@@ -1,5 +1,6 @@
 import init.recovery.trustonic.rc
 import tee.rc
+import logs.rc
 
 on fs
     install_keyring

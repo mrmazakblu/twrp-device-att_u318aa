@@ -12,7 +12,7 @@ service mobicore /vendor/bin/mcDriverDaemon --P1 /mnt/vendor/persist/mcRegistry 
     group root
     class core
     priority -20
-
+    seclabel u:r:recovery:s0
 
 # t-Drv naming
 # 020f0000000000000000000000000000.drbin : utils

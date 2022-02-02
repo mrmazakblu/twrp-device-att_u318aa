@@ -63,7 +63,7 @@ on fs
     #write /config/usb_gadget/g1/configs/b.1/MaxPower 500
     symlink /config/usb_gadget/g1/configs/b.1 /config/usb_gadget/g1/os_desc/b.1
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
-    write /sys/class/android_usb/android0/f_ffs/aliases adb
+    write /sys/class/android_usb/android0/f_ffs/aliases adb,fastboot
 
 # Restart adbd so it can run as root
 on property:service.adb.root=1
@@ -173,6 +173,10 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
+
+on property:sys.usb.config=fastboot
+    start fastbootd
+    stop adbd
 
 on property:sys.usb.config=fastboot && property:sys.usb.ffs.ready=1 && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idProduct 0x4EE0
