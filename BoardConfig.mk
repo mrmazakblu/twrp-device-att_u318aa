@@ -29,7 +29,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
 
 # Legacy GSI keeps 32 bits binder for 32 bits CPU Arch
-TARGET_USES_64_BIT_BINDER := false
+TARGET_USES_64_BIT_BINDER := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := U318AA
