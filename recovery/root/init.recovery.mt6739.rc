@@ -1,9 +1,10 @@
 import init.recovery.trustonic.rc
-import tee.rc
-import logs.rc
+import init.recovery.tee.rc
 
 on fs
-    install_keyring
+    #install_keyring
+    # Make sure we have the device encryption key.
+    #installkey /data
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     setprop crypto.ready 1
 
@@ -94,17 +95,13 @@ service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.trus
 
 on property:hwservicemanager.ready=true
     start keymaster-4-0
-    start mobicore
-    
+     
 on property:ro.crypto.state=unsupported
-    stop mobicore
     stop keymaster-4-0
 
 on property:ro.crypto.state=unencrypted
-    stop mobicore
     stop keymaster-4-0
 
 on property:twrp.decrypt.done=true
-    stop mobicore
     stop keymaster-4-0
 

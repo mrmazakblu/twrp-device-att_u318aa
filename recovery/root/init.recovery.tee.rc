@@ -1,9 +1,9 @@
 on init
     #create mountpoint for /mnt/vendor/persist partition
-    mkdir /mnt/vendor/persist 0771 root root
+    mkdir /mnt/vendor/persist 0771 system system
 
 on post-fs
-    chown root root /mnt/vendor/persist
+    chown system system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
 
     # We restorecon /mnt/vendor/persist to set SEPolicy label.
