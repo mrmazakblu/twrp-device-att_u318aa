@@ -1,5 +1,6 @@
 import init.recovery.trustonic.rc
 import init.recovery.tee.rc
+import init.recovery.hardware.keymaster@4.0-service.trustonic.rc
 
 on fs
     #install_keyring
@@ -87,21 +88,4 @@ on post-fs
     symlink /dev/block/platform/bootdevice/by-name/preloader_a /dev/block/platform/bootdevice/by-name/preloader_ufs_a
     symlink /dev/block/platform/bootdevice/by-name/preloader_b /dev/block/platform/bootdevice/by-name/preloader_ufs_b
 
-service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.trustonic
-    user root
-    group root drmrpc
-    disabled
-    seclabel u:r:recovery:s0
-
-on property:hwservicemanager.ready=true
-    start keymaster-4-0
-     
-on property:ro.crypto.state=unsupported
-    stop keymaster-4-0
-
-on property:ro.crypto.state=unencrypted
-    stop keymaster-4-0
-
-on property:twrp.decrypt.done=true
-    stop keymaster-4-0
 
