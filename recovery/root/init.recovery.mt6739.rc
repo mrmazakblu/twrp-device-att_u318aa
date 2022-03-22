@@ -9,6 +9,14 @@ on fs
 on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
     setprop crypto.ready 1
 
+#TINNO:add for set kph key flag
+service kph_flag /vendor/bin/kph_flag
+    class late_start
+    user system
+    group system
+    oneshot
+    disabled
+
 on boot
     # Enable Power modes and set the CPU Freq Sampling rates
     write /proc/hps/enabled 0
